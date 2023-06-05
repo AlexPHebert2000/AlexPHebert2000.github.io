@@ -1,0 +1,7 @@
+@font-face {
+    font-family:"Colwell";
+    src: url(COLWELL_.ttf)format("ttf");
+}
+.id{
+    font-family:"Colwell", Arial, Helvetica, sans-serif;
+}
