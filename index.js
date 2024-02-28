@@ -7,7 +7,7 @@ $(document).ready(() => {
     const $tweet = $('<div class=tweet></div>');
     const $user = $(`<div class=user-name>@${tweet.user}:</div>`);
     const $message = $(`<div class=message>${tweet.message}</div>`);
-    const $timestamp = $(`<div class=timestamp>Posted: ${moment(tweet.created_at).fromNow()}</div>`);
+    const $timestamp = $(`<div class=timestamp data-timestamp=${tweet.created_at.toISOString()}>Posted: ${moment(tweet.created_at).fromNow()}</div>`);
     $tweet.append($user, $message, $timestamp);
     return $tweet;
   }
@@ -21,15 +21,14 @@ $(document).ready(() => {
     const newTweets = streams.home.slice(currentTweetCount + 1);
     currentTweetCount = streams.home.length;
     addTweets(newTweets);
+    $('.timestamp').each(function(index, element) { $(element).text(`Posted: ${moment($(element).attr('data-timestamp')).fromNow()}`); });
     setTimeout(updateFeed, 500);
   }
-  /*VARIABLES*/
+
   //initialize current tweet count
   let currentTweetCount = 0;
   //save body tag
   const $body = $('body');
-
-  /*BODY*/
   //reset body
   $body.html('');
 
