@@ -1,3 +1,5 @@
 div.tweet {
   padding: 10px, 20px;
+  background-color: azure;
+  border: 2px solid powderblue;
 }
