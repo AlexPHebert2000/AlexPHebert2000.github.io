@@ -8,17 +8,24 @@ $(document).ready(() => {
     return $tweet;
   }
 
+  function addTweets(tweets) {
+    const $tweets = tweets.map(createTweet);
+    $feedDiv.append($tweets);
+  }
+
   let currentTweetCount = 10;
 
-
+  //save body tag
   const $body = $('body');
+  //reset body
   $body.html('');
 
+  //create feed div
   $feedDiv = $('<div id=feed></div>');
+  //add feed div to body
   $body.append($feedDiv);
 
-  const $tweets = streams.home.map(createTweet);
-  $feedDiv.append($tweets);
+  //add initial 10 tweets to body
+  addTweets(streams.home);
 
-  $('div.tweet').css('padding', '10px 20px');
 });
