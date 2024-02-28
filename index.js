@@ -1,11 +1,14 @@
 /* eslint-disable no-use-before-define */
 /* eslint-disable func-style */
+
 $(document).ready(() => {
   /*FUNCTIONS*/
   function createTweet(tweet) {
     const $tweet = $('<div class=tweet></div>');
-    const text = `@${tweet.user}: ${tweet.message}\nPosted at:${tweet.created_at}`;
-    $tweet.text(text);
+    const $user = $(`<div class=user-name>@${tweet.user}:</div>`);
+    const $message = $(`<div class=message>${tweet.message}</div>`);
+    const $timestamp = $(`<div class=timestamp>Posted: ${moment(tweet.created_at).fromNow()}</div>`);
+    $tweet.append($user, $message, $timestamp);
     return $tweet;
   }
 
