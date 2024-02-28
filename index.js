@@ -4,7 +4,7 @@ $(document).ready(() => {
   /*FUNCTIONS*/
   function createTweet(tweet) {
     const $tweet = $('<div class=tweet></div>');
-    const text = `@${tweet.user}: ${tweet.message}`;
+    const text = `@${tweet.user}: ${tweet.message}\nPosted at:${tweet.created_at}`;
     $tweet.text(text);
     return $tweet;
   }
