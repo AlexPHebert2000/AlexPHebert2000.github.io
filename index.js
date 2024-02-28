@@ -21,7 +21,7 @@ $(document).ready(() => {
   }
 
   function updateFeed() {
-    const newTweets = streams.home.slice(currentTweetCount + 1).filter(tweet => filter ? tweet.user === filter : true);
+    const newTweets = streams.home.slice(currentTweetCount).filter(tweet => filter ? tweet.user === filter : true);
     currentTweetCount = streams.home.length;
     addTweets(newTweets);
     $('.timestamp').each(function(index, element) { $(element).text(`Posted: ${moment($(element).attr('data-timestamp')).fromNow()}`); });
@@ -34,14 +34,27 @@ $(document).ready(() => {
   function userNameClickEventHelper(event) {
     filter = $(this).attr('data-name');
     $feedDiv.html('');
-    filteredTweets = streams.home.filter(tweet => tweet.user === filter);
+    filteredTweets = streams.home.filter(tweet => tweet.user === filter).toReversed();
     addTweets(filteredTweets);
+    $filterClearDiv.show();
   }
 
   function filterClearClickEventHelper(event) {
     filter = void 0;
     $feedDiv.html('');
     addTweets(streams.home.toReversed());
+    $filterClearDiv.hide();
+  }
+
+  function submitUserTweet(event) {
+    event.preventDefault();
+    const userTweet = {
+      user: $('#input-username').val(),
+      message: $('#input-tweet').val(),
+      created_at: new Date()
+    };
+    if (!streams.users[userTweet.user]) { streams.users[userTweet.user] = []; }
+    streams.home.push(userTweet);
   }
 
   function debug() {
@@ -62,11 +75,21 @@ $(document).ready(() => {
   //add feed div to body
   $body.prepend($feedDiv);
 
+  //create tweet input form
+  $userTweetInputDiv = $('<div id=user-tweet-input-div></div>');
+  $userTweetForm = $('<form><label for=username>Username</label><input value=user type=text id=input-username></input><input value="What\'s on your mind" type=text id=input-tweet></input><input id=submit-button type=submit value="Let us know!"></form>');
+  $userTweetForm.on('submit', submitUserTweet);
+  $userTweetInputDiv.append($userTweetForm);
+  $body.prepend($userTweetInputDiv);
+
+  //create filter clear button
   $filterClearDiv = $('<div id=filter-clear-div></div>');
   $filterClearButton = $('<button id=filter-clear-button>Clear Filter</button>');
   $filterClearButton.on('click', filterClearClickEventHelper);
   $filterClearDiv.append($filterClearButton);
   $body.prepend($filterClearDiv);
+  $filterClearDiv.hide();
+
 
   //start update feed
   updateFeed();
