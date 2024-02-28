@@ -17,12 +17,12 @@ $(document).ready(() => {
   function updateFeed() {
     const newTweets = streams.home.slice(currentTweetCount + 1);
     currentTweetCount = streams.home.length;
-    addTweets(newTweets.map(createTweet));
+    addTweets(newTweets);
     setTimeout(updateFeed, 500);
   }
   /*VARIABLES*/
   //initialize current tweet count
-  let currentTweetCount = 10;
+  let currentTweetCount = 0;
   //save body tag
   const $body = $('body');
 
@@ -35,7 +35,7 @@ $(document).ready(() => {
   //add feed div to body
   $body.prepend($feedDiv);
 
-  //add initial 10 tweets to body
-  addTweets(streams.home);
+  //start update feed
+  updateFeed();
 
 });
