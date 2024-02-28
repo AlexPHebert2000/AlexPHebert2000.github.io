@@ -8,7 +8,7 @@ $(document).ready(() => {
   function createTweet(tweet) {
     const $tweet = $('<div class=tweet></div>');
     const $user = $(`<div class=user-name data-name=${tweet.user}>@${tweet.user}:</div>`);
-    $('.user-name').on('click', userNameClickEventHelper );
+    $user.on('click', userNameClickEventHelper );
     const $message = $(`<div class=message>${tweet.message}</div>`);
     const $timestamp = $(`<div class=timestamp data-timestamp=${tweet.created_at.toISOString()}>Posted: ${moment(tweet.created_at).fromNow()}</div>`);
     $tweet.append($user, $message, $timestamp);
@@ -38,6 +38,12 @@ $(document).ready(() => {
     addTweets(filteredTweets);
   }
 
+  function filterClearClickEventHelper(event) {
+    filter = void 0;
+    $feedDiv.html('');
+    addTweets(streams.home.toReversed());
+  }
+
   function debug() {
     console.log(filter);
   }
@@ -55,6 +61,12 @@ $(document).ready(() => {
   $feedDiv = $('<div id=feed></div>');
   //add feed div to body
   $body.prepend($feedDiv);
+
+  $filterClearDiv = $('<div id=filter-clear-div></div>');
+  $filterClearButton = $('<button id=filter-clear-button>Clear Filter</button>');
+  $filterClearButton.on('click', filterClearClickEventHelper);
+  $filterClearDiv.append($filterClearButton);
+  $body.prepend($filterClearDiv);
 
   //start update feed
   updateFeed();
