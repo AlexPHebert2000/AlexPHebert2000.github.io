@@ -10,7 +10,7 @@ $(document).ready(() => {
     const $user = $(`<div class='user-name tweet-body' data-name=${tweet.user}>@${tweet.user}:</div>`);
     $user.on('click', userNameClickEventHelper );
     const $message = $(`<div class='message tweet-body'>${tweet.message}</div>`);
-    const $timestamp = $(`<div class='timestamp tweet-body' data-timestamp=${tweet.created_at.toISOString()}>Posted: ${moment(tweet.created_at).fromNow()}</div>`);
+    const $timestamp = $(`<div class='timestamp tweet-body' data-timestamp=${tweet.created_at.toISOString()}>${moment(tweet.created_at).fromNow()} : ${tweet.created_at.toDateString()}</div>`);
     $tweet.append($user, $message, $timestamp);
     return $tweet;
   }
@@ -24,7 +24,7 @@ $(document).ready(() => {
     const newTweets = streams.home.slice(currentTweetCount).filter(tweet => filter ? tweet.user === filter : true);
     currentTweetCount = streams.home.length;
     addTweets(newTweets);
-    $('.timestamp').each(function(index, element) { $(element).text(`${moment($(element).attr('data-timestamp')).fromNow()}`); });
+    $('.timestamp').each(function(index, element) { $(element).text(`${moment($(element).attr('data-timestamp')).fromNow()} : ${Date.parse($(element).attr('data-timestamp')).toDateString()}`); });
 
     if (DEBUG) { debug(); }
 
