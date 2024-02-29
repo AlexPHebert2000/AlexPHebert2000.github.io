@@ -28,7 +28,7 @@ $(document).ready(() => {
 
     if (DEBUG) { debug(); }
 
-    setTimeout(updateFeed, 500);
+    setTimeout(updateFeed, 2000);
   }
 
   function userNameClickEventHelper(event) {
