@@ -90,6 +90,9 @@ $(document).ready(() => {
   $userTweetInputDiv.append($userTweetForm);
   $body.prepend($userTweetInputDiv);
 
+  //create header
+  $body.prepend('<h1 id=header>Twiddler</h1>')
+
   //start update feed
   updateFeed();
 

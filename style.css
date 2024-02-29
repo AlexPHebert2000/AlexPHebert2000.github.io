@@ -8,6 +8,7 @@ div.tweet {
   height: auto;
   margin-bottom: 15px;
   margin-top: 10px;
+  margin-left: 4cap;
 }
 
 .user-name{
@@ -23,4 +24,9 @@ div.tweet {
 
 .tweet-body{
   padding-left: 1%;
+}
+
+#header{
+  margin-left: 8cap;
+  margin-right: 2cap;
 }
