@@ -2,4 +2,25 @@ div.tweet {
   padding: 10px, 20px;
   background-color: azure;
   border: 2px solid powderblue;
+  border-radius: 7px;
+  max-width: 400px;
+  min-width: 155px;
+  height: auto;
+  margin-bottom: 15px;
+  margin-top: 10px;
+}
+
+.user-name{
+  font-style: italic;
+  font-size:small;
+  color: blue;
+}
+
+.timestamp{
+  opacity: 45%;
+  font-size: x-small;
+}
+
+.tweet-body{
+  padding-left: 1%;
 }
