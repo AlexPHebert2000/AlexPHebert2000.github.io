@@ -1,4 +1,4 @@
-const DEBUG = false;
+const DEBUG = true;
 
 /* eslint-disable no-use-before-define */
 /* eslint-disable func-style */
@@ -24,7 +24,7 @@ $(document).ready(() => {
     const newTweets = streams.home.slice(currentTweetCount).filter(tweet => filter ? tweet.user === filter : true);
     currentTweetCount = streams.home.length;
     addTweets(newTweets);
-    $('.timestamp').each(function(index, element) { $(element).text(`${moment($(element).attr('data-timestamp')).fromNow()} : ${Date.parse($(element).attr('data-timestamp')).toDateString()}`); });
+    $('.timestamp').each(function(index, element) { $(element).text(`${moment($(element).attr('data-timestamp')).fromNow()} : ${$(element).attr('data-timestamp')}`); });
 
     if (DEBUG) { debug(); }
 
