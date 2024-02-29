@@ -85,7 +85,7 @@ $(document).ready(() => {
 
   //create tweet input form
   $userTweetInputDiv = $('<div id=user-tweet-input-div></div>');
-  $userTweetForm = $('<form><label for=username>Username</label><input value=user type=text id=input-username></input><input value="What\'s on your mind" type=text id=input-tweet></input><input id=submit-button type=submit value="Let us know!"></form>');
+  $userTweetForm = $('<form><label for=username>Username: </label><input value=user type=text id=input-username></input><input value="What\'s on your mind" type=text id=input-tweet></input><input id=submit-button type=submit value="Let us know!"></form>');
   $userTweetForm.on('submit', submitUserTweet);
   $userTweetInputDiv.append($userTweetForm);
   $body.prepend($userTweetInputDiv);

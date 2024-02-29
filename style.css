@@ -1,15 +1,35 @@
 div.tweet {
   padding: 10px, 20px;
   background-color: azure;
-  border: 2px solid powderblue;
+  border: 2px solid rgb(124, 148, 233);
   border-radius: 7px;
-  max-width: 400px;
-  min-width: 155px;
-  height: auto;
+  width: 400px;
+  height: auto !important;
   margin-bottom: 15px;
   margin-top: 10px;
   margin-left: 4cap;
 }
+
+#feed{
+  width:50% !important;
+  overflow:scroll;
+  height:720px;
+  transform:translatex(0px) translatey(0px);
+  display:flex;
+  flex: 0 1 auto;
+
+  flex-direction:column;
+  align-items:center;
+  justify-content:flex-start;
+
+ }
+
+ body{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+ }
 
 .user-name{
   font-style: italic;
@@ -30,3 +50,62 @@ div.tweet {
   margin-left: 8cap;
   margin-right: 2cap;
 }
+
+#header{
+  display:flex;
+  flex-direction:row;
+  justify-content:center;
+  margin-left:0px;
+  margin-right:0px;
+  padding-left:0px;
+ }
+
+ #user-tweet-input-div form label{
+  display:flex;
+  align-items:flex-end;
+  flex-direction:column;
+ }
+
+
+/* Timestamp */
+#feed .tweet .timestamp{
+ height:11px;
+ padding-top:0px;
+ margin-top:0px;
+ position:relative;
+ bottom:auto !important;
+ align-self:flex-end;
+ top:auto !important;
+ left:auto !important;
+ margin-bottom:0px;
+}
+
+/* Input tweet */
+#input-tweet{
+ transform:translatex(0px) translatey(0px);
+}
+
+/* Form Division */
+#user-tweet-input-div form{
+ transform:translatex(0px) translatey(0px);
+ display:flex;
+ flex-direction:row;
+ justify-content:center;
+}
+
+/* Label */
+#user-tweet-input-div form label{
+ padding-right:5px;
+}
+
+/* Input username */
+#input-username{
+ padding-right:2px;
+ margin-right:3px;
+}
+
+/* Message */
+#feed .tweet .message{
+  display:flex;
+  flex-wrap:wrap;
+ }
