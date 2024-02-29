@@ -1,4 +1,4 @@
-const DEBUG = true;
+const DEBUG = false;
 
 /* eslint-disable no-use-before-define */
 /* eslint-disable func-style */
